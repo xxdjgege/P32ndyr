@@ -404,8 +404,11 @@ body {
   }
 
   .au-logo {
-    width: 35%;
-  }
+  width: 45%;          /* slightly larger on mobile */
+  max-width: 160px;    /* cap it at original size */
+  min-width: 130px;    /* don’t shrink below this */
+}
+
 
   .form-box h2 {
     font-size: 22px;
