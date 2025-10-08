@@ -368,11 +368,20 @@ body {
 }
 
 /* Adjust logo and text scale */
+
 .au-logo {
   width: 25%;
-  max-width: 150px;
+  max-width: 180px;  /* keep it close to original */
+  min-width: 130px;  /* prevents shrinking too much on mobile */
   height: auto;
+  border-radius: 18px;
+  object-fit: contain;
+  display: block;
+  margin: 18px auto 0;
+  border: 3px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
 }
+
 
 /* For tablets */
 @media (max-width: 992px) {
@@ -411,3 +420,4 @@ body {
     font-size: 14px;
   }
 }
+
