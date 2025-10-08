@@ -343,156 +343,71 @@ form .linkTxt{
 }
 
 
-/* -----------------------------
-   RESPONSIVE: fluid typography & spacing
-   (paste at the BOTTOM of style.css)
-   ----------------------------- */
-
-:root{
-  /* fluid sizes: min, preferred, max */
-  --title-size: clamp(1.6rem, 2.6vw, 2.4rem);
-  --info-title-size: clamp(1.8rem, 3vw, 2.8rem);
-  --text-size: clamp(0.9rem, 1.6vw, 1rem);
-  --input-size: clamp(0.95rem, 1.6vw, 1.05rem);
-  --btn-size: clamp(0.95rem, 1.8vw, 1.05rem);
-  --gap: clamp(12px, 2vw, 28px);
-  --logo-size: clamp(110px, 18vw, 180px);
-}
-
-/* ensure page can scroll vertically if taller than viewport */
-html, body {
-  height: 100%;
+/* === UNIVERSAL RESPONSIVE FIT (keeps design consistent) === */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  overflow: hidden;
 }
 
-/* make wrapper scale-friendly but keep original layout */
 .wrapper {
-  width: min(95vw, 750px);
-  height: auto;
-  max-height: calc(100vh - 32px); /* leave small top/bottom gap */
-  margin: 16px auto;
-  overflow: visible; /* allow shadows / rotates to show if space permits */
-  box-sizing: border-box;
+  width: 90vw;
+  max-width: 750px;   /* original size */
+  aspect-ratio: 750 / 450;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.3s ease;
 }
 
-/* prevent cutting: allow vertical scroll inside wrapper when needed */
-.wrapper-inner-scroll {
-  max-height: 100%;
-  overflow-y: auto;
-}
-
-/* headings */
-.form-box h2 {
-  font-size: var(--title-size);
-}
-.info-text h2 {
-  font-size: var(--info-title-size);
-}
-
-/* input boxes and spacing */
-.form-box .input-box {
-  height: auto;
-  margin: var(--gap) 0;
-}
-.input-box input {
-  height: 46px;
-  font-size: var(--input-size);
-  padding: 10px 10px 10px 0;
-}
-
-/* labels */
-.input-box label {
-  font-size: var(--text-size);
-}
-
-/* icons */
-.input-box i {
-  font-size: clamp(16px, 1.6vw, 20px);
-}
-
-/* button */
-form button {
-  height: clamp(44px, 5.5vw, 50px);
-  font-size: var(--btn-size);
-  padding: 0 1rem;
-}
-
-/* link text */
-.linkTxt {
-  font-size: var(--text-size);
-}
-
-/* logo responsive but keeps shape */
+/* Adjust logo and text scale */
 .au-logo {
-  width: var(--logo-size);
+  width: 25%;
+  max-width: 150px;
   height: auto;
-  border-radius: 14px;       /* soft corners */
-  object-fit: contain;
-  display: block;
-  margin: 18px auto 0;
-  border: 3px solid rgba(255,255,255,0.45);
-  box-shadow: 0 0 12px rgba(255,255,255,0.25);
 }
 
-/* Small / narrow screens adjustments */
+/* For tablets */
 @media (max-width: 992px) {
-  /* hide heavy decorative panels that cause overflow */
-  .rotate-bg, .rotate-bg2 {
-    display: none;
-  }
-
-  /* make the inner panels relative so nothing gets clipped */
-  .form-box, .info-text {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-    padding: clamp(18px, 3.5vw, 36px) !important;
-    text-align: center !important;
-  }
-
-  /* ensure wrapper can grow and scroll if content taller */
   .wrapper {
-    max-height: none;
-    overflow: visible;
-  }
-
-  /* ensure inputs and buttons remain tappable */
-  .input-box input {
-    height: 48px;
+    width: 95vw;
+    transform: scale(0.95);
   }
 }
 
-/* Very small phones */
-@media (max-width: 420px) {
-  :root {
-    --logo-size: clamp(90px, 28vw, 130px);
-    --gap: 10px;
+/* For mobile phones */
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100vw;
+    border-radius: 0;
+    transform: scale(1);
   }
 
   .info-text h2 {
-    font-size: clamp(1.4rem, 5vw, 1.9rem);
-  }
-
-  .form-box h2 {
-    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    font-size: 24px;
   }
 
   .au-logo {
-    margin-top: 12px;
+    width: 35%;
   }
 
-  /* allow vertical scrolling for long forms */
-  html, body {
-    overflow-y: auto;
+  .form-box h2 {
+    font-size: 22px;
   }
 
-  .wrapper {
-    margin: 8px auto;
-    width: 100%;
-    max-width: 750px;
+  .input-box input {
+    font-size: 14px;
+  }
+
+  .btn {
+    height: 40px;
+    font-size: 14px;
   }
 }
-
