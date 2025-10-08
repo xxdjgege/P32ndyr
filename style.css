@@ -343,37 +343,41 @@ form .linkTxt{
 }
 
 
-/* === Option 2: Full-width fluid version === */
+/* === Option 2: Full-width adaptive version — prevents cutoff === */
 
-/* Tablets */
 @media (max-width: 992px) {
-  .wrapper {
-    width: 90%;
+  html, body {
     height: auto;
+    overflow-y: auto;   /* allow vertical scroll if needed */
+  }
+
+  .wrapper {
+    position: relative;
+    width: 95%;
+    max-width: 750px;
+    height: auto;       /* let it stretch vertically */
+    margin: 2rem auto;
     border-radius: 12px;
   }
 
   .form-box,
   .info-text {
-    width: 100%;
     position: relative;
+    width: 100%;
+    height: auto;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
   }
 
-  .info-text.login {
-    padding: 2rem 1rem;
+  .rotate-bg,
+  .rotate-bg2 {
+    display: none;      /* hide the angled panels that caused overflow */
   }
 
   .au-logo {
     width: 140px;
     height: auto;
     border-radius: 15px;
-  }
-
-  .rotate-bg,
-  .rotate-bg2 {
-    display: none; /* prevent overflow on smaller screens */
   }
 }
 
@@ -382,7 +386,12 @@ form .linkTxt{
   .wrapper {
     width: 100%;
     border-radius: 0;
+    margin: 0;
     box-shadow: none;
+  }
+
+  .form-box h2 {
+    font-size: 1.4rem;
   }
 
   .info-text h2 {
@@ -392,10 +401,6 @@ form .linkTxt{
   .au-logo {
     width: 120px;
     border-radius: 12px;
-  }
-
-  .form-box h2 {
-    font-size: 1.4rem;
   }
 
   .input-box input,
