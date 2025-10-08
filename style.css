@@ -339,4 +339,67 @@ form .linkTxt{
 .wrapper.active .rotate-bg2{
     transform: rotate(-11deg) skewY(-40deg);
     transition-delay: 1.2s;
+
+}
+
+
+/* === Option 2: Full-width fluid version === */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .wrapper {
+    width: 90%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .form-box,
+  .info-text {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .info-text.login {
+    padding: 2rem 1rem;
+  }
+
+  .au-logo {
+    width: 140px;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .rotate-bg,
+  .rotate-bg2 {
+    display: none; /* prevent overflow on smaller screens */
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .info-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .au-logo {
+    width: 120px;
+    border-radius: 12px;
+  }
+
+  .form-box h2 {
+    font-size: 1.4rem;
+  }
+
+  .input-box input,
+  .btn {
+    font-size: 0.9rem;
+  }
 }
